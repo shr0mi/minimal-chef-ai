@@ -1,0 +1,21 @@
+export default function IngredientsList(props){
+    return(
+        <section>
+        <h2>Ingredients on hand:</h2>
+            <ul className='ingredient-list'>
+                {props.ingredients.map((i) => <li key={i}>{i}</li>)}
+            </ul>
+        {props.ingredients.length > 3 && 
+            <div className='get-recipe-container-center'>
+            <div className='get-recipe-container'>
+                <div>
+                    <h3>Ready for a recipe?</h3>
+                    <p>Generate a recipe from a list of ingredients.</p>
+                </div>
+                <button onClick={props.handleRecipeShown}>Get a recipe</button>
+            </div>
+            </div>
+        }
+        </section>
+    )
+}

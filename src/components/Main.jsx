@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import AiRecipe from './AiRecipe'
+import IngredientsList from './IngredientsList';
 
 export default function Main(){
     const [ingredients, setIngredients] = useState([]);
@@ -30,29 +32,13 @@ export default function Main(){
                 />
                 <button >+ Add ingredient</button>
             </form>
-            { ingredients.length > 0 && 
-            <section>
-                <h2>Ingredients on hand:</h2>
-                <ul className='ingredient-list'>
-                    {ingredients.map((i) => <li key={i}>{i}</li>)}
-                </ul>
-                {ingredients.length > 3 && 
-                <div className='get-recipe-container-center'>
-                <div className='get-recipe-container'>
-                    <div>
-                        <h3>Ready for a recipe?</h3>
-                        <p>Generate a recipe from a list of ingredients.</p>
-                    </div>
-                    <button onClick={handleRecipeShown}>Get a recipe</button>
-                </div>
-                </div>
-                }
-            </section>
+            { ingredients.length > 0 &&
+
+                <IngredientsList ingredients={ingredients} handleRecipeShown={handleRecipeShown}/>
+
             }
             {recipeShown && 
-            <div className='recipe'>
-                <h2>Recipe:</h2>
-            </div>
+                <AiRecipe/>
             }
         </main>
     )
