@@ -52,3 +52,37 @@ main{
   color: black;
   transition: 0.25s;
 }
+
+.ingredient-list li{
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.get-recipe-container-center{
+  display: flex;
+  justify-content: center;
+}
+
+.get-recipe-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(221, 221, 221);
+  flex-wrap: wrap;
+}
+
+.get-recipe-container div p{
+  color: rgb(124, 124, 124);
+}
+
+.get-recipe-container button{
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(228, 110, 0);
+}
+
