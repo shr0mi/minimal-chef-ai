@@ -1,16 +1,66 @@
-# React + Vite
+# Minimal Chef AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Minimal Chef AI is a React-based web application that allows users to generate recipes using AI. By providing a list of ingredients, the app integrates with the Google GenAI API to suggest recipes in markdown format. This project demonstrates the use of React props, state management, and API integration.
 
-Currently, two official plugins are available:
+<video src="./video.webm" autoplay loop muted playsinline width="600">
+</video>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Add ingredients to a list dynamically.
+- Generate recipes using AI based on the provided ingredients.
+- Display recipes in a user-friendly markdown format.
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+Ensure you have the following installed on your system:
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- npm (comes with Node.js)
 
-## Expanding the ESLint configuration
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/minimal-chef-ai.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd minimal-chef-ai
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Create a `.env` file in the root directory and add your Google GenAI API key:
+   ```env
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+6. Open the app in your browser at `http://localhost:5173`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Dependencies
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool for modern web projects.
+- **@google/genai**: Google GenAI SDK for AI content generation.
+- **react-markdown**: A React component for rendering Markdown.
+
+## Project Structure
+```
+minimal-chef-ai/
+├── public/                # Static assets
+├── src/                   # Source code
+│   ├── components/        # React components
+│   ├── assets/            # Project assets
+│   ├── App.jsx            # Main app component
+│   ├── main.jsx           # Entry point
+│   └── ai.js              # AI integration logic
+├── .env                   # Environment variables
+├── package.json           # Project metadata and dependencies
+├── vite.config.js         # Vite configuration
+└── README.md              # Project documentation
+```
+
+## License
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the license terms.
