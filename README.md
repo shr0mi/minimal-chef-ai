@@ -2,7 +2,7 @@
 
 Minimal Chef AI is a React-based web application that allows users to generate recipes using AI. By providing a list of ingredients, the app integrates with the Google GenAI API to suggest recipes in markdown format. This project demonstrates the use of React props, state management, and API integration.
 
-[[video src="./video.webm"]]
+[[video src="./video.mp4"]]
 
 ## Features
 - Add ingredients to a list dynamically.
