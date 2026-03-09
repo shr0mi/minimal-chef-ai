@@ -1,9 +1,12 @@
 import {useState} from 'react'
 import AiRecipe from './AiRecipe'
 import IngredientsList from './IngredientsList';
+import { getRecipeGemini } from '../ai';
 
 export default function Main(){
     const [ingredients, setIngredients] = useState([]);
+
+    const [recipeMarkdown, setRecipeMarkdown] = useState("");
 
     function handleSubmit(formData){
         const newIngredient = formData.get("ingredient")
@@ -16,8 +19,14 @@ export default function Main(){
 
     const [recipeShown, setRecipeShown] = useState(false);
 
-    function handleRecipeShown(){
-        setRecipeShown(true)
+    async function handleRecipeShown(){
+        try{
+            const markdown = await getRecipeGemini(ingredients)
+            setRecipeMarkdown(markdown)
+            setRecipeShown(true)
+        }catch(error){
+            console.error("Failed to fetch recipe", error)
+        }
 
     }
 
@@ -38,7 +47,7 @@ export default function Main(){
 
             }
             {recipeShown && 
-                <AiRecipe/>
+                <AiRecipe markdown={recipeMarkdown}/>
             }
         </main>
     )
