@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import AiRecipe from './AiRecipe'
 import IngredientsList from './IngredientsList';
 import { getRecipeGemini } from '../ai';
@@ -7,6 +7,11 @@ export default function Main(){
     const [ingredients, setIngredients] = useState([]);
 
     const [recipeMarkdown, setRecipeMarkdown] = useState("");
+
+    const [recipeShown, setRecipeShown] = useState(false);
+
+    const recipeSection = useRef(null)
+    //console.log(recipeSection);
 
     function handleSubmit(formData){
         const newIngredient = formData.get("ingredient")
@@ -17,7 +22,15 @@ export default function Main(){
         console.log(ingredients)
     }
 
-    const [recipeShown, setRecipeShown] = useState(false);
+    useEffect(()=>{
+        if(recipeSection.current != null){
+            recipeSection.current.scrollIntoView({behaviour: "smooth"});
+        }
+
+    }        
+    ,[recipeMarkdown])
+
+    
 
     async function handleRecipeShown(){
         try{
@@ -43,7 +56,7 @@ export default function Main(){
             </form>
             { ingredients.length > 0 &&
 
-                <IngredientsList ingredients={ingredients} handleRecipeShown={handleRecipeShown}/>
+                <IngredientsList ref={recipeSection} ingredients={ingredients} handleRecipeShown={handleRecipeShown}/>
 
             }
             {recipeShown && 
